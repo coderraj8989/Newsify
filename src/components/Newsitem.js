@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 export class Newsitem extends Component {
     render() {
-        let { title, description, imageUrl , url} = this.props;
+        let { title, description, imageUrl , url, date, time} = this.props;
         return (
             <div className="my-3">
                 <div className="card">
@@ -10,6 +10,7 @@ export class Newsitem extends Component {
                     <div className="card-body">
                         <h5 className="card-title">{title}</h5>
                         <p className="card-text">{description}...</p>
+                        <p className="card-text"><small className="text-muted">Last updated {date} {time}</small></p>
                         <a href={url} rel='noreferrer' target="_blank" className="btn btn-sm btn-dark">read more...</a>
                     </div>
                 </div>

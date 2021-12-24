@@ -36,21 +36,22 @@ export class News extends Component {
     }
 
     render() {
+        const { category } = this.props;
         return (
             <div className="container my-3">
-                <h1 className="text-center">Newsify - Top Headlines</h1>
+                <h1 className="text-center">Newsify - Top {category.charAt(0).toUpperCase() + category.slice(1) } Headlines</h1>
                 {this.state.loading && <Spinner/>}
                 <div className="row">
                     {!this.state.loading && this.state.articles.map((element) => {
                         return (
                             <div className="col-md-4" key={element.url}>
-                                <Newsitem title={element.title} description={element.content.slice(0, 120)} imageUrl={element.imageUrl} url={element.url} />
+                                <Newsitem title={element.title} description={element.content.slice(0, 120)} imageUrl={element.imageUrl} url={element.readMoreUrl?element.readMoreUrl:element.url} date={element.date} time={element.time} />
                             </div>
                         )
                     })}
                 </div>
                 <div className="d-flex flex-row-reverse mt-2">
-                    <button type="button" className="btn btn-dark" onClick={this.handleTop}>&uarr; Back to top</button>
+                    {!this.state.loading && <button type="button" className="btn btn-dark" onClick={this.handleTop}>&uarr; Back to top</button>}
                 </div>
             </div>
         )
