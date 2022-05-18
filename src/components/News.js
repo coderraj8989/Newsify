@@ -22,7 +22,8 @@ export class News extends Component {
     }
 
     async componentDidMount() {
-        let url = `https://inshortsapi.vercel.app/news?category=${this.props.category}`;
+        let url = `https://inshorts.deta.dev/news?category=${this.props.category}`;
+
         this.setState({loading: true});
         let res = await fetch(url);
         let data = await res.json();
